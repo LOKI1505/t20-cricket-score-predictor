@@ -1,1 +1,7 @@
-streamlit>=1.45,<2\nnumpy>=1.26,<3\npandas>=2.2,<3\njoblib>=1.4,<2\nscikit-learn>=1.6,<2\nxgboost>=2,<4\n
+
+streamlit>=1.45,<2
+numpy>=1.26,<3
+pandas>=2.2,<3
+joblib>=1.4,<2
+scikit-learn>=1.6,<2
+xgboost>=2,<4
