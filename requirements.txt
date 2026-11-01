@@ -1,0 +1,1 @@
+streamlit>=1.45,<2\nnumpy>=1.26,<3\npandas>=2.2,<3\njoblib>=1.4,<2\nscikit-learn>=1.6,<2\nxgboost>=2,<4\n
