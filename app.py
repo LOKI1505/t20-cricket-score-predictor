@@ -12,8 +12,7 @@ st.set_page_config(
     layout="centered"
 )
 
-MODEL_FILE = Path(__file__).parent / "t20_score_predictor_no_city.joblib"
-
+MODEL_FILE = Path(__file__).parent / "t20_score_predictor_no_city_v2.joblib"
 
 @st.cache_resource
 def load_model():
