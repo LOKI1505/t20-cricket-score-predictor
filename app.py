@@ -12,7 +12,7 @@ st.set_page_config(
     layout="centered"
 )
 
-MODEL_FILE = Path(__file__).parent / "t20_score_predictor_improved.joblib"
+MODEL_FILE = Path(__file__).parent / "t20_score_predictor_no_city.joblib"
 
 
 @st.cache_resource
@@ -39,10 +39,8 @@ try:
 
     # Read available team and city names from the trained encoder.
     encoder = model.named_steps["preprocess"].named_transformers_["category"]
-    batting_teams, bowling_teams, cities = encoder.categories_
-
+    batting_teams, bowling_teams = encoder.categories_
     teams = sorted(set(batting_teams).intersection(set(bowling_teams)))
-    cities = sorted(cities)
 
 except Exception as error:
     st.error("Unable to load the trained model.")
@@ -60,13 +58,7 @@ with st.form("prediction_form"):
 
     with right:
         bowling_team = st.selectbox("Bowling team", teams, index=teams.index("Australia") if "Australia" in teams else 0)
-
-    city = st.selectbox(
-        "City / venue",
-        cities,
-        help="Select a location that appeared in the training data."
-    )
-
+        
     st.subheader("Current innings")
 
     left, middle, right = st.columns(3)
@@ -121,7 +113,6 @@ if submitted:
     match_data = {
         "batting_team": batting_team,
         "bowling_team": bowling_team,
-        "city": city,
         "current_score": int(current_score),
         "balls_left": balls_left,
         "wickets_left": wickets_left,
